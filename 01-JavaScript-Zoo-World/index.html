@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zoo - World</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+    <div class="title">
+        <h1>Welcome to Zoo-World</h1>
+    </div>
+    <div class="keys">
+        <div data-key="65" class="key">
+            <div class="animal-name">CAT</div>
+            <div class="animal-images">
+                <img data-key="65" class="img-display" src="images/cat.png" alt="">
+            </div>
+        </div>
+        <div data-key="83" class="key">
+            <div class="animal-name">DOG</div>
+            <div class="animal-images">
+                <img data-key="83" class="img-display" src="images/dog.png" alt="">
+            </div>
+        </div>
+        <div data-key="68" class="key">
+            <div class="animal-name">COW</div>
+            <div class="animal-images">
+                <img data-key="68" class="img-display" src="images/cow.png" alt="">
+            </div>
+        </div>
+        <div data-key="70" class="key">
+            <div class="animal-name">FROG</div>
+            <div class="animal-images">
+                <img data-key="70" class="img-display" src="images/frog.png" alt="">
+            </div>
+        </div>
+        <div data-key="71" class="key">
+            <div class="animal-name">PIG</div>
+            <div class="animal-images">
+                <img data-key="71" class="img-display" src="images/pig.png" alt="">
+            </div>
+        </div>
+        <div data-key="72" class="key">
+            <div class="animal-name">SNAKE</div>
+            <div class="animal-images">
+                <img data-key="72" class="img-display" src="images/rattlesnake.png" alt="">
+            </div>
+        </div>
+        <div data-key="74" class="key">
+            <div class="animal-name">BIRD</div>
+            <div class="animal-images">
+                <img data-key="74" class="img-display" src="images/robin.png" alt="">
+            </div>
+        </div>
+        <div data-key="75" class="key">
+            <div class="animal-name">ROOSTER</div>
+            <div class="animal-images">
+                <img data-key="75" class="img-display" src="images/rooster.png" alt="">
+            </div>
+        </div>
+        <div data-key="76" class="key">
+            <div class="animal-name">SHEEP</div>
+            <div class="animal-images">
+                <img data-key="76" class="img-display" src="images/sheep.png" alt="">
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <audio data-key="65" src="sounds/cat.mp3"></audio>
+    <audio data-key="83" src="sounds/dog.mp3"></audio>
+    <audio data-key="68" src="sounds/cow.mp3"></audio>
+    <audio data-key="70" src="sounds/frog.mp3"></audio>
+    <audio data-key="71" src="sounds/pig.mp3"></audio>
+    <audio data-key="72" src="sounds/rattlesnake.mp3"></audio>
+    <audio data-key="74" src="sounds/robin.mp3"></audio>
+    <audio data-key="75" src="sounds/rooster.mp3"></audio>
+    <audio data-key="76" src="sounds/sheep.mp3"></audio>
+
+<script>
+    function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        const image = document.querySelector(`.img-display[data-key="${e.keyCode}"]`);
+        if(!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add('playing');
+        setTimeout(function(){key.classList.remove('playing');}, 250);
+        image.style.display = "block";
+        setTimeout(function(){image.style.display = "none"}, 1500);
+    }
+
+    window.addEventListener('keydown', playSound);
+
+</script>
+
+
+</body>
+</html>
